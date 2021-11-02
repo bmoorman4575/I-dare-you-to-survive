@@ -471,7 +471,7 @@ gdjs.multiplayerCode.condition1IsTrue_0.val = gdjs.evtTools.variable.getVariable
 }if ( gdjs.multiplayerCode.condition1IsTrue_0.val ) {
 {
 {gdjs.multiplayerCode.conditionTrue_1 = gdjs.multiplayerCode.condition2IsTrue_0;
-gdjs.multiplayerCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(16687324);
+gdjs.multiplayerCode.conditionTrue_1.val = runtimeScene.getOnceTriggers().triggerOnce(18295060);
 }
 }}
 }
