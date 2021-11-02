@@ -19,6 +19,19 @@ gdjs.singleplayer_32menuCode.mapOfGDgdjs_46singleplayer_9532menuCode_46GDplayObj
 
 gdjs.singleplayer_32menuCode.condition0IsTrue_0.val = false;
 {
+gdjs.singleplayer_32menuCode.condition0IsTrue_0.val = gdjs.evtTools.runtimeScene.sceneJustBegins(runtimeScene);
+}if (gdjs.singleplayer_32menuCode.condition0IsTrue_0.val) {
+{gdjs.evtTools.sound.playMusic(runtimeScene, "assets\\sounds\\IDYS Theme.mp3", true, 100, 1);
+}}
+
+}
+
+
+{
+
+
+gdjs.singleplayer_32menuCode.condition0IsTrue_0.val = false;
+{
 gdjs.singleplayer_32menuCode.condition0IsTrue_0.val = gdjs.evtTools.common.logicalNegation(false);
 }if (gdjs.singleplayer_32menuCode.condition0IsTrue_0.val) {
 gdjs.copyArray(runtimeScene.getObjects("fpstext"), gdjs.singleplayer_32menuCode.GDfpstextObjects1);
