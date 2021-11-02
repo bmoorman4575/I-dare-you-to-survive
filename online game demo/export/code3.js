@@ -47,9 +47,9 @@ gdjs.copyArray(runtimeScene.getObjects("fpstext"), gdjs.singleplayer_32menuCode.
     gdjs.singleplayer_32menuCode.GDfpstextObjects1[i].setString("FPS: " + gdjs.evtTools.common.toString(Math.round(1 / gdjs.evtTools.runtimeScene.getElapsedTimeInSeconds(runtimeScene))));
 }
 }{for(var i = 0, len = gdjs.singleplayer_32menuCode.GDfadeObjects1.length ;i < len;++i) {
-    gdjs.singleplayer_32menuCode.GDfadeObjects1[i].setOpacity(gdjs.singleplayer_32menuCode.GDfadeObjects1[i].getOpacity() - (2));
+    gdjs.singleplayer_32menuCode.GDfadeObjects1[i].setOpacity(gdjs.singleplayer_32menuCode.GDfadeObjects1[i].getOpacity() - (1));
 }
-}{gdjs.evtTools.sound.setGlobalVolume(runtimeScene, gdjs.evtTools.sound.getGlobalVolume(runtimeScene) + (1));
+}{gdjs.evtTools.sound.setGlobalVolume(runtimeScene, gdjs.evtTools.sound.getGlobalVolume(runtimeScene) + (0.3));
 }}
 
 }
