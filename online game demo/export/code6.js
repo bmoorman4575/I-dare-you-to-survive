@@ -4899,9 +4899,13 @@ for(var i = 0, k = 0, l = gdjs.main_32game_32codeCode.GDpistolObjects2.length;i<
     }
 }
 gdjs.main_32game_32codeCode.GDpistolObjects2.length = k;}if (gdjs.main_32game_32codeCode.condition0IsTrue_0.val) {
+gdjs.copyArray(runtimeScene.getObjects("flashlighthint"), gdjs.main_32game_32codeCode.GDflashlighthintObjects2);
 gdjs.copyArray(runtimeScene.getObjects("gunlight"), gdjs.main_32game_32codeCode.GDgunlightObjects2);
 {for(var i = 0, len = gdjs.main_32game_32codeCode.GDgunlightObjects2.length ;i < len;++i) {
     gdjs.main_32game_32codeCode.GDgunlightObjects2[i].deleteFromScene(runtimeScene);
+}
+}{for(var i = 0, len = gdjs.main_32game_32codeCode.GDflashlighthintObjects2.length ;i < len;++i) {
+    gdjs.main_32game_32codeCode.GDflashlighthintObjects2[i].removeTimer("light");
 }
 }}
 
