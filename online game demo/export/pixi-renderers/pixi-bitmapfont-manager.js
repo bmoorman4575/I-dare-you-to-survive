@@ -1,5 +1,6 @@
 var gdjs;
 (function(gdjs2) {
+  const logger = new gdjs2.Logger("Bitmap text");
   const PIXI = GlobalPIXIModule.PIXI;
   const defaultBitmapFontKey = "GDJS-DEFAULT-BITMAP-FONT";
   const uninstallCacheSize = 5;
@@ -60,7 +61,7 @@ var gdjs;
         return;
       }
       if (!this._pixiBitmapFontsInUse[bitmapFontInstallKey]) {
-        console.error("BitmapFont with name " + bitmapFontInstallKey + " was tried to be released but was never marked as used.");
+        logger.warn("BitmapFont with name " + bitmapFontInstallKey + " was tried to be released but was never marked as used.");
         return;
       }
       this._pixiBitmapFontsInUse[bitmapFontInstallKey].objectsUsingTheFont--;
@@ -72,7 +73,7 @@ var gdjs;
         if (this._pixiBitmapFontsToUninstall.length > uninstallCacheSize) {
           const oldestUnloadedPixiBitmapFontName = this._pixiBitmapFontsToUninstall.shift();
           PIXI.BitmapFont.uninstall(oldestUnloadedPixiBitmapFontName);
-          console.log('Uninstalled BitmapFont "' + oldestUnloadedPixiBitmapFontName + '" from memory.');
+          logger.log("Bitmap Text", 'Uninstalled BitmapFont "' + oldestUnloadedPixiBitmapFontName + '" from memory.');
         }
       }
     }
@@ -84,7 +85,7 @@ var gdjs;
       }
       const fontData = this._loadedFontsData[bitmapFontResourceName];
       if (!fontData) {
-        console.warn('Could not find Bitmap Font for resource named "' + bitmapFontResourceName + '". The default font will be used.');
+        logger.warn('Could not find Bitmap Font for resource named "' + bitmapFontResourceName + '". The default font will be used.');
         return this.getDefaultBitmapFont();
       }
       const texture = this._imageManager.getPIXITexture(textureAtlasResourceName);
@@ -93,7 +94,7 @@ var gdjs;
         this._markBitmapFontAsUsed(bitmapFontInstallKey);
         return bitmapFont;
       } catch (error) {
-        console.warn('Could not load the Bitmap Font for resource named "' + bitmapFontResourceName + '". The default font will be used. Error is: ' + error);
+        logger.error('Could not load the Bitmap Font for resource named "' + bitmapFontResourceName + '". The default font will be used. Error is: ' + error);
         return this.getDefaultBitmapFont();
       }
     }
@@ -107,7 +108,7 @@ var gdjs;
         return fetch(bitmapFontResource.file).then((response) => response.text()).then((fontData) => {
           this._loadedFontsData[bitmapFontResource.name] = fontData;
         }).catch((error) => {
-          console.error("Can't fetch the bitmap font file " + bitmapFontResource.file + ", error: " + error);
+          logger.error("Can't fetch the bitmap font file " + bitmapFontResource.file + ", error: " + error);
         }).then(() => {
           loadedCount++;
           onProgress(loadedCount, bitmapFontResources.length);

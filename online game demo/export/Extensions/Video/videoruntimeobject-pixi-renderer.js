@@ -1,5 +1,6 @@
 var gdjs;
 (function(gdjs2) {
+  const logger = new gdjs2.Logger("Video object PIXI renderer");
   const PIXI = GlobalPIXIModule.PIXI;
   class VideoRuntimeObjectPixiRenderer {
     constructor(runtimeObject, runtimeScene) {
@@ -79,7 +80,7 @@ var gdjs;
       if (promise !== void 0) {
         promise.then(() => {
         }).catch(() => {
-          console.warn("The video did not start because: video is invalid or no interaction with the game has been captured before (this is blocked by the navigator: https://goo.gl/xX8pDD)");
+          logger.warn("The video did not start because: video is invalid or no interaction with the game has been captured before (this is blocked by the navigator: https://goo.gl/xX8pDD)");
         });
       }
     }

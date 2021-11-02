@@ -1,5 +1,6 @@
 var gdjs;
 (function(gdjs2) {
+  const logger = new gdjs2.Logger("Filters");
   const PIXI = GlobalPIXIModule.PIXI;
   let PixiFiltersTools;
   (function(PixiFiltersTools2) {
@@ -29,7 +30,7 @@ var gdjs;
     };
     PixiFiltersTools2.registerFilterCreator = function(filterName, filterCreator) {
       if (_filterCreators.hasOwnProperty(filterName)) {
-        console.warn('Filter "' + filterName + '" was already registered in gdjs.PixiFiltersTools. Replacing it with the new one.');
+        logger.warn('Filter "' + filterName + '" was already registered in gdjs.PixiFiltersTools. Replacing it with the new one.');
       }
       _filterCreators[filterName] = filterCreator;
     };

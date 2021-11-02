@@ -1,8 +1,9 @@
 var gdjs;
 (function(gdjs2) {
+  const logger = new gdjs2.Logger("PIXI Image manager");
   const PIXI = GlobalPIXIModule.PIXI;
   const logFileLoadingError = (file, error) => {
-    console.error("Unable to load file " + file + " with error:", error ? error : "(unknown error)");
+    logger.error("Unable to load file " + file + " with error:", error ? error : "(unknown error)");
   };
   const applyTextureSettings = (texture, resourceData) => {
     if (!texture)
@@ -35,7 +36,7 @@ var gdjs;
         if (texture2.valid) {
           return texture2;
         } else {
-          console.error("Texture for " + resourceName + " is not valid anymore (or never was).");
+          logger.error("Texture for " + resourceName + " is not valid anymore (or never was).");
         }
       }
       if (resourceName === "") {
@@ -43,10 +44,10 @@ var gdjs;
       }
       const resource = findResourceWithNameAndKind(this._resources, resourceName, "image");
       if (!resource) {
-        console.warn('Unable to find texture for resource "' + resourceName + '".');
+        logger.warn('Unable to find texture for resource "' + resourceName + '".');
         return this._invalidTexture;
       }
-      console.log('Loading texture for resource "' + resourceName + '"...');
+      logger.log('Loading texture for resource "' + resourceName + '"...');
       const file = resource.file;
       const texture = PIXI.Texture.from(file).on("error", (error) => {
         logFileLoadingError(file, error);
@@ -64,11 +65,11 @@ var gdjs;
       }
       const resource = findResourceWithNameAndKind(this._resources, resourceName, "video");
       if (!resource) {
-        console.warn('Unable to find video texture for resource "' + resourceName + '".');
+        logger.warn('Unable to find video texture for resource "' + resourceName + '".');
         return this._invalidTexture;
       }
       const file = resource.file;
-      console.log('Loading video texture for resource "' + resourceName + '"...');
+      logger.log('Loading video texture for resource "' + resourceName + '"...');
       const texture = PIXI.Texture.from(file).on("error", (error) => {
         logFileLoadingError(file, error);
       });

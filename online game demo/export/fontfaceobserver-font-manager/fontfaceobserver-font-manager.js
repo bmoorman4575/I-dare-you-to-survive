@@ -1,5 +1,6 @@
 var gdjs;
 (function(gdjs2) {
+  const logger = new gdjs2.Logger("Font manager");
   class FontFaceObserverFontManager {
     constructor(resources) {
       this._loadedFontFamily = {};
@@ -84,7 +85,7 @@ var gdjs;
         FontFaceObserverFontManager._loadFont(fontFamily, file).then(function() {
           onFontLoaded(fontFamily, fontResources);
         }, function(error) {
-          console.error('Error loading font resource "' + fontResources[0].name + '" (file: ' + file + "): " + (error.message || "Unknown error"));
+          logger.error('Error loading font resource "' + fontResources[0].name + '" (file: ' + file + "): " + (error.message || "Unknown error"));
           onFontLoaded(fontFamily, fontResources);
         });
       });

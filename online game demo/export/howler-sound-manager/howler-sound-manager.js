@@ -1,9 +1,10 @@
 var gdjs;
 (function(gdjs2) {
+  const logger = new gdjs2.Logger("Audio manager");
   const HowlParameters = {
     preload: true,
-    onplayerror: (_, error) => console.error("Can't play an audio file: ", error),
-    onloaderror: (_, error) => console.error("Error while loading an audio file: ", error)
+    onplayerror: (_, error) => logger.error("Can't play an audio file: " + error),
+    onloaderror: (_, error) => logger.error("Error while loading an audio file: " + error)
   };
   class HowlerSound {
     constructor(howl) {
@@ -374,7 +375,7 @@ var gdjs;
       let loadedCount = 0;
       const onLoad = (_, error) => {
         if (error)
-          console.error("There was an error while loading an audio file:", error);
+          logger.warn("There was an error while preloading an audio file: " + error);
         loadedCount++;
         if (loadedCount === totalCount)
           return onComplete(totalCount);

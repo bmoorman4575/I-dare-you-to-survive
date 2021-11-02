@@ -46,6 +46,12 @@ var gdjs;
       delete rendererEffects[effectName];
       return true;
     }
+    clearEffects(rendererObject) {
+      if (rendererObject) {
+        rendererObject.filters = [];
+      }
+      return true;
+    }
     setEffectDoubleParameter(rendererEffects, name, parameterName, value) {
       const filter = rendererEffects[name];
       if (!filter)

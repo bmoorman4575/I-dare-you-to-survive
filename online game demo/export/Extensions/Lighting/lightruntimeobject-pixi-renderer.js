@@ -1,5 +1,6 @@
 var gdjs;
 (function(gdjs2) {
+  const logger = new gdjs2.Logger("Light object");
   const PIXI = GlobalPIXIModule.PIXI;
   const LightRuntimeObjectPixiRenderer2 = class {
     constructor(runtimeObject, runtimeScene) {
@@ -89,7 +90,7 @@ var gdjs;
     }
     updateMesh() {
       if (!PIXI.utils.isWebGLSupported()) {
-        console.warn("This device does not support webgl, which is required for Lighting Extension.");
+        logger.warn("This device does not support webgl, which is required for Lighting Extension.");
         return;
       }
       this.updateTexture();
@@ -261,7 +262,7 @@ var gdjs;
       const obstaclesCount = lightObstacles.length;
       const obstacleHitBoxes = new Array(obstaclesCount);
       for (let i = 0; i < obstaclesCount; i++) {
-        obstacleHitBoxes[i] = lightObstacles[i].owner.getHitBoxes();
+        obstacleHitBoxes[i] = lightObstacles[i].behavior.owner.getHitBoxes();
       }
       const obstaclePolygons = [];
       obstaclePolygons.push(this._lightBoundingPoly);

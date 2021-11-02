@@ -7,6 +7,9 @@ var gdjs;
       debuggerTools2.pause = function(runtimeScene) {
         runtimeScene.getGame().pause(true);
       };
+      debuggerTools2.log = function(message, type, group) {
+        gdjs2.log(group, message, type, false);
+      };
       debuggerTools2.enableDebugDraw = function(runtimeScene, enableDebugDraw2, showHiddenInstances, showPointsNames, showCustomPoints) {
         runtimeScene.enableDebugDraw(enableDebugDraw2, showHiddenInstances, showPointsNames, showCustomPoints);
       };

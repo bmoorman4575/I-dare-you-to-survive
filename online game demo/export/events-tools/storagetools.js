@@ -1,5 +1,6 @@
 var gdjs;
 (function(gdjs2) {
+  const logger = new gdjs2.Logger("Storage");
   let evtTools;
   (function(evtTools2) {
     let storage;
@@ -14,10 +15,10 @@ var gdjs;
           }
         }
       } catch (error) {
-        console.warn("Unable to get access to the localStorage: ", error);
+        logger.error("Unable to get access to the localStorage: " + error);
       }
       if (!localStorage) {
-        console.warn("Storage actions won't work as no localStorage was found.");
+        logger.error("Storage actions won't work as no localStorage was found.");
       }
       const loadedObjects = new Hashtable();
       storage2.loadJSONFileFromStorage = (name) => {
@@ -30,7 +31,7 @@ var gdjs;
             serializedString = localStorage.getItem("GDJS_" + name);
           }
         } catch (error) {
-          console.warn('Unable to load data from localStorage for "' + name + '":', error);
+          logger.error('Unable to load data from localStorage for "' + name + '": ' + error);
         }
         let jsObject = {};
         try {
@@ -38,7 +39,7 @@ var gdjs;
             jsObject = JSON.parse(serializedString);
           }
         } catch (error) {
-          console.warn('Unable to load data from "' + name + '" - data is not valid JSON:', error);
+          logger.error('Unable to load data from "' + name + '" - data is not valid JSON: ' + error);
         }
         loadedObjects.put(name, jsObject);
       };
@@ -53,7 +54,7 @@ var gdjs;
             localStorage.setItem("GDJS_" + name, serializedString);
           }
         } catch (error) {
-          console.warn('Unable to save data to localStorage for "' + name + '":', error);
+          logger.error('Unable to save data to localStorage for "' + name + '": ' + error);
         }
         loadedObjects.remove(name);
       };

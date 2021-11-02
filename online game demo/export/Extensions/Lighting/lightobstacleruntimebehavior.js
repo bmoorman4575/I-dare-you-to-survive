@@ -2,12 +2,7 @@ var gdjs;
 (function(gdjs2) {
   class LightObstaclesManager {
     constructor(runtimeScene) {
-      this._obstacleRBush = new rbush(9, [
-        ".owner.getAABB().min[0]",
-        ".owner.getAABB().min[1]",
-        ".owner.getAABB().max[0]",
-        ".owner.getAABB().max[1]"
-      ]);
+      this._obstacleRBush = new rbush();
     }
     static getManager(runtimeScene) {
       if (!runtimeScene._lightObstaclesManager) {
@@ -16,10 +11,14 @@ var gdjs;
       return runtimeScene._lightObstaclesManager;
     }
     addObstacle(obstacle) {
-      this._obstacleRBush.insert(obstacle);
+      if (obstacle.currentRBushAABB)
+        obstacle.currentRBushAABB.updateAABBFromOwner();
+      else
+        obstacle.currentRBushAABB = new gdjs2.BehaviorRBushAABB(obstacle);
+      this._obstacleRBush.insert(obstacle.currentRBushAABB);
     }
     removeObstacle(obstacle) {
-      this._obstacleRBush.remove(obstacle);
+      this._obstacleRBush.remove(obstacle.currentRBushAABB);
     }
     getAllObstaclesAround(object, radius, result) {
       const x = object.getX();
@@ -42,6 +41,7 @@ var gdjs;
       this._oldY = 0;
       this._oldWidth = 0;
       this._oldHeight = 0;
+      this.currentRBushAABB = null;
       this._registeredInManager = false;
       this._manager = LightObstaclesManager.getManager(runtimeScene);
     }

@@ -1,5 +1,6 @@
 var gdjs;
 (function(gdjs2) {
+  const logger = new gdjs2.Logger("PIXI game renderer");
   const PIXI = GlobalPIXIModule.PIXI;
   const defaultPreventedKeys = [
     "ArrowUp",
@@ -75,7 +76,7 @@ var gdjs;
           });
         }
       } catch (error) {
-        console.error("Unexpected error while setting up orientation: ", error);
+        logger.error("Unexpected error while setting up orientation: ", error);
       }
     }
     _resizeCanvas() {
@@ -142,7 +143,7 @@ var gdjs;
           browserWindow.setContentSize(width, height);
         }
       } else {
-        console.warn("Window size can't be changed on this platform.");
+        logger.warn("Window size can't be changed on this platform.");
       }
     }
     centerWindow() {

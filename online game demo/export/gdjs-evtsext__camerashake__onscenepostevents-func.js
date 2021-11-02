@@ -1035,7 +1035,7 @@ if( gdjs.evtsExt__CameraShake__onScenePostEvents.condition1IsTrue_1.val ) {
 }if ( gdjs.evtsExt__CameraShake__onScenePostEvents.condition0IsTrue_0.val ) {
 {
 {gdjs.evtsExt__CameraShake__onScenePostEvents.conditionTrue_1 = gdjs.evtsExt__CameraShake__onScenePostEvents.condition1IsTrue_0;
-gdjs.evtsExt__CameraShake__onScenePostEvents.conditionTrue_1.val = eventsFunctionContext.getOnceTriggers().triggerOnce(19458748);
+gdjs.evtsExt__CameraShake__onScenePostEvents.conditionTrue_1.val = eventsFunctionContext.getOnceTriggers().triggerOnce(19504900);
 }
 }}
 if (gdjs.evtsExt__CameraShake__onScenePostEvents.condition1IsTrue_0.val) {
