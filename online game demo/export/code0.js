@@ -55,7 +55,7 @@ gdjs.configurationCode.eventsList0 = function(runtimeScene) {
 
 
 {
-{gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "singleplayer menu", false);
+{gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "Menu", false);
 }}
 
 }

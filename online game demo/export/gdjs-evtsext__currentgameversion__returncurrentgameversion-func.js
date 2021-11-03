@@ -1,35 +1,26 @@
-gdjs.evtsExt__Clipboard__ReadText = {};
+gdjs.evtsExt__CurrentGameVersion__ReturnCurrentGameVersion = {};
 
-gdjs.evtsExt__Clipboard__ReadText.conditionTrue_0 = {val:false};
-gdjs.evtsExt__Clipboard__ReadText.condition0IsTrue_0 = {val:false};
+gdjs.evtsExt__CurrentGameVersion__ReturnCurrentGameVersion.conditionTrue_0 = {val:false};
+gdjs.evtsExt__CurrentGameVersion__ReturnCurrentGameVersion.condition0IsTrue_0 = {val:false};
 
 
-gdjs.evtsExt__Clipboard__ReadText.userFunc0xf8d430 = function(runtimeScene, eventsFunctionContext) {
+gdjs.evtsExt__CurrentGameVersion__ReturnCurrentGameVersion.userFunc0xd63a68 = function(runtimeScene, eventsFunctionContext) {
 "use strict";
-const electron = runtimeScene.getGame().getRenderer().getElectron();
-if (electron && electron.clipboard) eventsFunctionContext.returnValue = electron.clipboard.readText();
-
+eventsFunctionContext.returnValue = runtimeScene.getGame().getGameData().properties.version;
 };
-gdjs.evtsExt__Clipboard__ReadText.eventsList0 = function(runtimeScene, eventsFunctionContext) {
+gdjs.evtsExt__CurrentGameVersion__ReturnCurrentGameVersion.eventsList0 = function(runtimeScene, eventsFunctionContext) {
 
 {
 
 
-
-}
-
-
-{
-
-
-gdjs.evtsExt__Clipboard__ReadText.userFunc0xf8d430(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
+gdjs.evtsExt__CurrentGameVersion__ReturnCurrentGameVersion.userFunc0xd63a68(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
 
 }
 
 
 };
 
-gdjs.evtsExt__Clipboard__ReadText.func = function(runtimeScene, parentEventsFunctionContext) {
+gdjs.evtsExt__CurrentGameVersion__ReturnCurrentGameVersion.func = function(runtimeScene, parentEventsFunctionContext) {
 var eventsFunctionContext = {
   _objectsMap: {
 },
@@ -69,7 +60,7 @@ var eventsFunctionContext = {
 };
 
 
-gdjs.evtsExt__Clipboard__ReadText.eventsList0(runtimeScene, eventsFunctionContext);
+gdjs.evtsExt__CurrentGameVersion__ReturnCurrentGameVersion.eventsList0(runtimeScene, eventsFunctionContext);
 return "" + eventsFunctionContext.returnValue;
 }
 
